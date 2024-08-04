@@ -24,13 +24,17 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
 	// Database
-	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.postgresql:postgresql")
 	implementation("org.flywaydb:flyway-core")
 	implementation("org.flywaydb:flyway-database-postgresql")
 
 	// Api
 	implementation(project(":api"))
 	implementation(project(":starter"))
+
+	// Json
+	implementation("com.fasterxml.jackson.core:jackson-databind")
+	implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
 
 	// Development
 	testAndDevelopmentOnly("org.springframework.boot:spring-boot-devtools")

@@ -24,8 +24,6 @@ repositories {
 }
 
 dependencies {
-    // Spring Boot
-
 }
 
 publishing {

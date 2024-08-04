@@ -23,11 +23,11 @@ public class TestTickerApplication {
 	@ServiceConnection
 	@RestartScope
 	RabbitMQContainer rabbitContainer() {
-		return new RabbitMQContainer(DockerImageName.parse("rabbitmq:latest"));
+		return new RabbitMQContainer(DockerImageName.parse("rabbitmq:4.0.0-beta.3-management"));
 	}
 
 	public static void main(String[] args) {
-		SpringApplication.from(TickerApplication::main).with(TestContainersConfiguration.class).run(args);
+		SpringApplication.from(TickerApplication::main).with(TestTickerApplication.class).run(args);
 	}
 
 }
