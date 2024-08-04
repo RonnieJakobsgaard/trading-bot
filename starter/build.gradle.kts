@@ -31,7 +31,7 @@ dependencies {
 publishing {
     publications {
         create<MavenPublication>("mavenJava") {
-            artifactId = "api"
+            artifactId = "starter"
 
             from(components["java"])
 

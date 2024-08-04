@@ -11,14 +11,4 @@ public class TickerApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(TickerApplication.class, args);
 	}
-
-
-	@RestController
-	static class Test {
-
-		@GetMapping()
-		String helloWorld() {
-			return "Hello World!";
-		}
-	}
 }

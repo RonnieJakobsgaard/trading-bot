@@ -20,16 +20,24 @@ repositories {
 dependencies {
 	// Spring
 	implementation("org.springframework.boot:spring-boot-starter-amqp")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
 	implementation("org.springframework.boot:spring-boot-starter-web")
 
-	// Runtime
+	// Database
 	runtimeOnly("org.postgresql:postgresql")
+	implementation("org.flywaydb:flyway-core")
+	implementation("org.flywaydb:flyway-database-postgresql")
+
+	// Api
+	implementation(project(":api"))
+	implementation(project(":starter"))
 
 	// Development
-	developmentOnly("org.springframework.boot:spring-boot-devtools")
+	testAndDevelopmentOnly("org.springframework.boot:spring-boot-devtools")
 
 	// Test
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
+	testImplementation("org.springframework.boot:spring-boot-starter-webflux")
 	testImplementation("org.springframework.boot:spring-boot-testcontainers")
 	testImplementation("org.springframework.amqp:spring-rabbit-test")
 	testImplementation("org.testcontainers:junit-jupiter")
