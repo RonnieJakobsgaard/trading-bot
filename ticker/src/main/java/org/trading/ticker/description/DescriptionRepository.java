@@ -1,12 +1,10 @@
 package org.trading.ticker.description;
 
-import org.springframework.data.repository.CrudRepository;
+import org.trading.ticker.common.crud.BaseSymbolRepository;
 
-import java.util.Optional;
 
-public interface DescriptionRepository extends CrudRepository<Description, String> {
+public interface DescriptionRepository extends BaseSymbolRepository<Description> {
 
-    Optional<Description> findBySymbol(String symbol);
 
-    void deleteBySymbol(String symbol);
+
 }

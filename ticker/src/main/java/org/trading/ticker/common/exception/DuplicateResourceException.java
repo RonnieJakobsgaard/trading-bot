@@ -1,4 +1,4 @@
-package org.trading.ticker.exception;
+package org.trading.ticker.common.exception;
 
 public class DuplicateResourceException extends RuntimeException {
     public DuplicateResourceException(String message) {

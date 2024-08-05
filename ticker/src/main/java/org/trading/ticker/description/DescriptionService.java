@@ -1,68 +1,54 @@
 package org.trading.ticker.description;
 
-import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import org.trading.api.events.ResourceEventDTO;
-import org.trading.ticker.exception.DuplicateResourceException;
-import org.trading.ticker.exception.ResourceNotFound;
+import org.trading.ticker.common.crud.BaseSymbolService;
 import org.trading.ticker.notification.NotificationPublisher;
 
 import java.time.Instant;
 
 @Service
-public class DescriptionService {
-
-    private final DescriptionRepository descriptionRepository;
-    private final NotificationPublisher notificationPublisher;
+public class DescriptionService extends BaseSymbolService<Description> {
 
     public DescriptionService(DescriptionRepository descriptionRepository, NotificationPublisher notificationPublisher) {
-        this.descriptionRepository = descriptionRepository;
-        this.notificationPublisher = notificationPublisher;
+        super(descriptionRepository, notificationPublisher);
     }
 
-    public Description getByTickerSymbol(String symbol) {
-        return descriptionRepository.findBySymbol(symbol).orElseThrow(() -> new ResourceNotFound("No description found for symbol " + symbol));
-    }
-
-    public Description saveDescription(String symbol, Description description) {
-        description.setSymbol(symbol);
-        try {
-            Description createdDescription = descriptionRepository.save(description);
-            notificationPublisher.publish("description.created", createCreatedEvent(createdDescription));
-            return createdDescription;
-        } catch (Exception e) {
-            if(e.getMessage().contains("duplicate key value violates unique constraint")) {
-                throw new DuplicateResourceException("Description already exists for symbol " + symbol);
-            }
-
-            throw e;
-        }
-    }
-
-    public Description updateDescription(String symbol, Description description) {
-        return descriptionRepository.findBySymbol(symbol)
-                .map(d -> {
-                    d.setName(description.getName());
-                    d.setDescription(description.getDescription());
-                    d.setExchange(description.getExchange());
-                    return descriptionRepository.save(d);
-                })
-                .orElseThrow(() -> new ResourceNotFound("No description found for symbol " + symbol));
-    }
-
-    @Transactional
-    public void deleteDescription(String symbol) {
-        descriptionRepository.deleteBySymbol(symbol);
-    }
-
-    private ResourceEventDTO createCreatedEvent(Description createdDescription) {
+    @Override
+    public ResourceEventDTO createCreatedEvent(Description createdEntity) {
         ResourceEventDTO event = new ResourceEventDTO();
         event.setTopic("ticker.notification");
         event.setRoutingKey("description.created");
-        event.setId(createdDescription.getId().toString());
+        event.setId(createdEntity.getId().toString());
         event.setType("description");
         event.setResource("description");
-        event.setMessage("Description created for symbol " + createdDescription.getSymbol());
+        event.setMessage("Description created for symbol " + createdEntity.getSymbol());
+        event.setTimestamp(Instant.now());
+        return event;
+    }
+
+    @Override
+    public ResourceEventDTO createUpdatedEvent(Description updatedEntity) {
+        ResourceEventDTO event = new ResourceEventDTO();
+        event.setTopic("ticker.notification");
+        event.setRoutingKey("description.updated");
+        event.setId(updatedEntity.getId().toString());
+        event.setType("description");
+        event.setResource("description");
+        event.setMessage("Description created for symbol " + updatedEntity.getSymbol());
+        event.setTimestamp(Instant.now());
+        return event;
+    }
+
+    @Override
+    public ResourceEventDTO createDeletedEvent(Description deletedEntity) {
+        ResourceEventDTO event = new ResourceEventDTO();
+        event.setTopic("ticker.notification");
+        event.setRoutingKey("description.deleted");
+        event.setId(deletedEntity.getId().toString());
+        event.setType("description");
+        event.setResource("description");
+        event.setMessage("Description created for symbol " + deletedEntity.getSymbol());
         event.setTimestamp(Instant.now());
         return event;
     }

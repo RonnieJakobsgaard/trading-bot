@@ -1,11 +1,11 @@
-package org.trading.ticker.description;
+package org.trading.ticker.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ProblemDetail;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import org.trading.ticker.exception.DuplicateResourceException;
-import org.trading.ticker.exception.ResourceNotFound;
+import org.trading.ticker.common.exception.DuplicateResourceException;
+import org.trading.ticker.common.exception.ResourceNotFound;
 
 @ControllerAdvice
 public class HttpControllerAdvice {

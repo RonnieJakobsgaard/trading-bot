@@ -1,4 +1,4 @@
-package org.trading.ticker.exception;
+package org.trading.ticker.common.exception;
 
 public class ResourceNotFound extends RuntimeException {
     public ResourceNotFound(String message) {
