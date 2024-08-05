@@ -32,7 +32,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isOk()
@@ -46,7 +46,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isOk()
@@ -54,7 +54,7 @@ public class TestDescription {
                 .value(res -> assertDescription(description, res));
 
         webTestClient.get()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .exchange()
                 .expectStatus().isOk()
                 .expectBody(DescriptionDTO.class)
@@ -67,7 +67,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isOk()
@@ -77,7 +77,7 @@ public class TestDescription {
         var updatedDescription = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NYSE");
 
         webTestClient.put()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(updatedDescription)
                 .exchange()
                 .expectStatus().isOk()
@@ -91,7 +91,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isOk()
@@ -99,7 +99,7 @@ public class TestDescription {
                 .value(res -> assertDescription(description, res));
 
         webTestClient.delete()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .exchange()
                 .expectStatus().isNoContent();
     }
@@ -108,7 +108,7 @@ public class TestDescription {
     public void testGetDescriptionNotFound() {
         // Arrange
         webTestClient.get()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .exchange()
                 .expectStatus().isNotFound();
     }
@@ -117,7 +117,7 @@ public class TestDescription {
     public void testDeleteDescriptionNotFound() {
         // Arrange
         webTestClient.delete()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .exchange()
                 .expectStatus().isNoContent();
     }
@@ -128,7 +128,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.put()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isNotFound();
@@ -140,7 +140,7 @@ public class TestDescription {
         var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isOk()
@@ -148,7 +148,7 @@ public class TestDescription {
                 .value(res -> assertDescription(description, res));
 
         webTestClient.post()
-                .uri("/description/IBM")
+                .uri("/description/symbol/IBM")
                 .bodyValue(description)
                 .exchange()
                 .expectStatus().isBadRequest();

@@ -4,7 +4,4 @@ import org.trading.ticker.common.crud.BaseSymbolRepository;
 
 
 public interface DescriptionRepository extends BaseSymbolRepository<Description> {
-
-
-
 }

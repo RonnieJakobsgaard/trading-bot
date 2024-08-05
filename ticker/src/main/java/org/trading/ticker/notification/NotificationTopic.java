@@ -4,7 +4,7 @@ import org.springframework.amqp.core.TopicExchange;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-@Configuration()
+@Configuration
 public class NotificationTopic {
 
     public static final String TICKER_TOPIC = "ticker.notification";

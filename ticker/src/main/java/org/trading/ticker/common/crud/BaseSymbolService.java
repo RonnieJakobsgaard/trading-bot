@@ -39,6 +39,7 @@ public abstract class BaseSymbolService<T extends BaseSymbolEntity> extends Base
     public T updateBySymbol(String symbol, T entity) {
         return baseSymbolRepository.findBySymbol(symbol)
                 .map(d -> {
+                    entity.setId(d.getId());
                     T updatedEntity = baseSymbolRepository.save(entity);
                     notificationPublisher.publish("description.updated", createUpdatedEvent(updatedEntity));
                     return updatedEntity;
