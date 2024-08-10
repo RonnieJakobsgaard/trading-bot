@@ -10,7 +10,7 @@ public class NotificationTopic {
     public static final String TICKER_TOPIC = "ticker.notification";
 
     @Bean
-    public TopicExchange tickerTopic() {
+    public TopicExchange tickerNotificationTopic() {
         return new TopicExchange(TICKER_TOPIC);
     }
 }

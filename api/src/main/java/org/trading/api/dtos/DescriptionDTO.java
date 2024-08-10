@@ -1,8 +1,9 @@
-package org.trading.api.description;
+package org.trading.api.dtos;
 
 public class DescriptionDTO {
 
     private String symbol;
+    private String type;
     private String name;
     private String description;
     private String exchange;
@@ -10,8 +11,9 @@ public class DescriptionDTO {
     public DescriptionDTO() {
     }
 
-    public DescriptionDTO(String symbol, String name, String description, String exchange) {
+    public DescriptionDTO(String symbol, String type, String name, String description, String exchange) {
         this.symbol = symbol;
+        this.type = type;
         this.name = name;
         this.description = description;
         this.exchange = exchange;
@@ -23,6 +25,14 @@ public class DescriptionDTO {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getName() {

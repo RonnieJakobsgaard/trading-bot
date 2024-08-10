@@ -1,7 +1,7 @@
 package org.trading.ticker.description;
 
 import org.springframework.stereotype.Service;
-import org.trading.api.events.ResourceEventDTO;
+import org.trading.api.dtos.ResourceEventDTO;
 import org.trading.ticker.common.crud.BaseSymbolService;
 import org.trading.ticker.notification.NotificationPublisher;
 
@@ -35,7 +35,7 @@ public class DescriptionService extends BaseSymbolService<Description> {
         event.setId(updatedEntity.getId().toString());
         event.setType("description");
         event.setResource("description");
-        event.setMessage("Description created for symbol " + updatedEntity.getSymbol());
+        event.setMessage("Description updated for symbol " + updatedEntity.getSymbol());
         event.setTimestamp(Instant.now());
         return event;
     }
@@ -48,7 +48,7 @@ public class DescriptionService extends BaseSymbolService<Description> {
         event.setId(deletedEntity.getId().toString());
         event.setType("description");
         event.setResource("description");
-        event.setMessage("Description created for symbol " + deletedEntity.getSymbol());
+        event.setMessage("Description deleted for symbol " + deletedEntity.getSymbol());
         event.setTimestamp(Instant.now());
         return event;
     }

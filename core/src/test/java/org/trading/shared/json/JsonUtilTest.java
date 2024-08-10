@@ -1,11 +1,13 @@
-package org.trading.ticker.utils.json;
+package org.trading.shared.json;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 import org.junit.runner.RunWith;
 import org.mockito.junit.MockitoJUnitRunner;
-import org.trading.ticker.utils.JsonUtil;
+import org.trading.shared.utils.JsonUtil;
+
 
 import java.util.HashMap;
 import java.util.Map;

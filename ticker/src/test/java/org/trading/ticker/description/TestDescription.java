@@ -7,7 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.context.annotation.Import;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.trading.api.description.DescriptionDTO;
+import org.trading.api.dtos.DescriptionDTO;
 import org.trading.ticker.TestTickerApplication;
 
 
@@ -29,7 +29,7 @@ public class TestDescription {
     @Test
     public void testSaveDescription() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
                 .uri("/description/symbol/IBM")
@@ -43,7 +43,7 @@ public class TestDescription {
     @Test
     public void testGetDescription() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
                 .uri("/description/symbol/IBM")
@@ -64,7 +64,7 @@ public class TestDescription {
     @Test
     public void testUpdateDescription() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
                 .uri("/description/symbol/IBM")
@@ -74,7 +74,7 @@ public class TestDescription {
                 .expectBody(DescriptionDTO.class)
                 .value(res -> assertDescription(description, res));
 
-        var updatedDescription = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NYSE");
+        var updatedDescription = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NYSE");
 
         webTestClient.put()
                 .uri("/description/symbol/IBM")
@@ -88,7 +88,7 @@ public class TestDescription {
     @Test
     public void testDeleteDescription() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
                 .uri("/description/symbol/IBM")
@@ -125,7 +125,7 @@ public class TestDescription {
     @Test
     public void testUpdateDescriptionNotFound() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.put()
                 .uri("/description/symbol/IBM")
@@ -137,7 +137,7 @@ public class TestDescription {
     @Test
     public void testSaveDescriptionAlreadyExists() {
         // Arrange
-        var description = new DescriptionDTO("IBM", "IBM", "International Business Machines Corporation", "NASDQ");
+        var description = new DescriptionDTO("IBM", "stock", "IBM", "International Business Machines Corporation", "NASDQ");
 
         webTestClient.post()
                 .uri("/description/symbol/IBM")

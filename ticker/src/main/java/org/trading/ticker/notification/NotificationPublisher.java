@@ -3,7 +3,8 @@ package org.trading.ticker.notification;
 import org.springframework.amqp.core.TopicExchange;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.stereotype.Component;
-import org.trading.ticker.utils.JsonUtil;
+import org.trading.shared.utils.JsonUtil;
+
 
 @Component
 public class NotificationPublisher {

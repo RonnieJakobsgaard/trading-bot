@@ -1,7 +1,7 @@
 package org.trading.ticker.common.crud;
 
 import jakarta.transaction.Transactional;
-import org.trading.api.events.ResourceEventDTO;
+import org.trading.api.dtos.ResourceEventDTO;
 import org.trading.ticker.common.exception.DuplicateResourceException;
 import org.trading.ticker.common.exception.ResourceNotFound;
 import org.trading.ticker.notification.NotificationPublisher;

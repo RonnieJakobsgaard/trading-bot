@@ -1,4 +1,4 @@
-package org.trading.api.events;
+package org.trading.api.dtos;
 
 import java.time.Instant;
 

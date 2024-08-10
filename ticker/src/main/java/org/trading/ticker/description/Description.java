@@ -2,6 +2,7 @@ package org.trading.ticker.description;
 
 import jakarta.persistence.Entity;
 import org.trading.ticker.common.crud.BaseSymbolEntity;
+import org.trading.ticker.common.crud.TickerType;
 
 
 import java.util.UUID;
@@ -16,8 +17,8 @@ public class Description extends BaseSymbolEntity {
     public Description() {
     }
 
-    public Description(UUID id, String symbol, String name, String description, String exchange) {
-        super(id, symbol);
+    public Description(UUID id, String symbol, TickerType tickerType, String name, String description, String exchange) {
+        super(id, symbol, tickerType);
         this.name = name;
         this.description = description;
         this.exchange = exchange;

@@ -14,12 +14,16 @@ public class BaseSymbolEntity {
 
     private String symbol;
 
+    @Enumerated(EnumType.ORDINAL)
+    private TickerType type;
+
     public BaseSymbolEntity() {
     }
 
-    public BaseSymbolEntity(UUID id, String symbol) {
+    public BaseSymbolEntity(UUID id, String symbol, TickerType type) {
         this.id = id;
         this.symbol = symbol;
+        this.type = type;
     }
 
     public UUID getId() {
@@ -36,5 +40,13 @@ public class BaseSymbolEntity {
 
     public void setSymbol(String symbol) {
         this.symbol = symbol;
+    }
+
+    public TickerType getType() {
+        return type;
+    }
+
+    public void setType(TickerType type) {
+        this.type = type;
     }
 }

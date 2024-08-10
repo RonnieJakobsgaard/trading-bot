@@ -1,4 +1,4 @@
-package org.trading.ticker.utils.exception;
+package org.trading.shared.utils.exception;
 
 public class JsonException extends RuntimeException {
 
