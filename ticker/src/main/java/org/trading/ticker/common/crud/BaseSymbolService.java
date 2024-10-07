@@ -6,6 +6,8 @@ import org.trading.ticker.common.exception.DuplicateResourceException;
 import org.trading.ticker.common.exception.ResourceNotFound;
 import org.trading.ticker.notification.NotificationPublisher;
 
+import java.util.UUID;
+
 public abstract class BaseSymbolService<T extends BaseSymbolEntity> extends BaseCrudService<T> {
 
     private final BaseSymbolRepository<T> baseSymbolRepository;
@@ -19,6 +21,10 @@ public abstract class BaseSymbolService<T extends BaseSymbolEntity> extends Base
 
     public T getBySymbol(String symbol) {
         return baseSymbolRepository.findBySymbol(symbol).orElseThrow(() -> new ResourceNotFound("No description found for symbol " + symbol));
+    }
+
+    public UUID getIdBySymbol(String symbol) {
+        return baseSymbolRepository.findIdBySymbol(symbol).orElseThrow(() -> new ResourceNotFound("No description found for symbol " + symbol));
     }
 
     public T saveBySymbol(String symbol, T entity) {

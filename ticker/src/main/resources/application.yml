@@ -4,8 +4,14 @@ spring:
   rabbitmq:
     host: localhost
     port: 5672
-    user: guest
-    password: guest
+    username: ticker
+    password: ticker
+
+  datasource:
+    url: jdbc:postgresql://localhost:5432/ticker
+    username: ticker
+    password: ticker
+    driver-class-name: org.postgresql.Driver
 
 server:
   port: 8091

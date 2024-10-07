@@ -9,7 +9,6 @@ import org.springframework.core.Ordered;
 import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import org.springframework.stereotype.Component;
 import org.trading.api.dtos.TickerDataDTO;
-import org.trading.shared.utils.JsonUtil;
 import org.trading.testdata.TestDataProvider;
 
 import java.io.BufferedReader;
@@ -64,8 +63,6 @@ public class TimeSeriesTestDataLoader implements TestDataProvider, Ordered {
                     tickerDataDTO.setTime(localDateTime);
                     tickerDataProducer.publish(objectMapper.writeValueAsString(tickerDataDTO));
                 }
-
-
             }
         }
     }

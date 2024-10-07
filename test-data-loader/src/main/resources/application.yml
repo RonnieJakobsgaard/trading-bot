@@ -2,3 +2,10 @@ spring:
   application:
     name: test-data-loader
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: ticker
+    password: ticker
+
+
